@@ -18,8 +18,8 @@ runs:
       shell: bash
       run: |
         wget https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/ninja-linux.zip
-        unzip ninja-linux.zip
-        sudo cp ninja /home/runner/.local/bin/
+        unzip -d /home/runner/.ninja/ ninja-linux.zip
+        echo "/home/runner/.ninja" >> $GITHUB_PATH
 
     - name: "Windows installation"
       if: runner.os == 'Windows'
@@ -28,13 +28,13 @@ runs:
         mkdir ninja
         cd ninja
         curl -kLSs https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/ninja-win.zip -o ninja-win.zip
-        unzip ninja-win.zip
-        sudo cp ninja /home/runner/.local/bin/
+        unzip -d /home/runner/.ninja ninja-win.zip
+        echo "/home/runner/.ninja" >> $GITHUB_PATH
 
     - name: "MacOS installation"
       if: runner.os == 'MacOS'
       shell: bash
       run: |
         wget https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/ninja-mac.zip
-        unzip ninja-mac.zip
-        sudo cp ninja /home/runner/.local/bin/
+        unzip -d /home/runner/.ninja ninja-mac.zip
+        echo "/home/runner/.ninja" >> $GITHUB_PATH
