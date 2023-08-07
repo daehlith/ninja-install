@@ -1,0 +1,31 @@
+name: Test Ninja installation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-installation:
+    name: Testing the Ninja installation
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./
+
+      - name: Check ninja location and version
+        shell: bash
+        run: |
+          which ninja
+          ninja --version
