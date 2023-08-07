@@ -28,5 +28,6 @@ jobs:
       - name: Check ninja location and version
         shell: bash
         run: |
+          env | sort
           which ninja
           ninja --version

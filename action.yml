@@ -19,8 +19,8 @@ runs:
       run: |
         env | sort
         wget https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/ninja-linux.zip
-        unzip -d ~/.ninja/ ninja-linux.zip
-        echo "~/.ninja" >> $GITHUB_PATH
+        unzip -d $HOME/.ninja/ ninja-linux.zip
+        echo "$HOME/.ninja" >> $GITHUB_PATH
 
     - name: "Windows installation"
       if: runner.os == 'Windows'
@@ -28,8 +28,8 @@ runs:
       run: |
         env | sort
         curl -kLSs https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/ninja-win.zip -o ninja-win.zip
-        unzip -d ~/.ninja ninja-win.zip
-        echo "$~/.ninja" >> $GITHUB_PATH
+        unzip -d $HOME/.ninja ninja-win.zip
+        echo "$HOME/.ninja" >> $GITHUB_PATH
 
     - name: "MacOS installation"
       if: runner.os == 'MacOS'
@@ -37,5 +37,5 @@ runs:
       run: |
         env | sort
         wget https://github.com/ninja-build/ninja/releases/download/v${NINJA_VERSION}/ninja-mac.zip
-        unzip -d ~/.ninja ninja-mac.zip
-        echo "~/.ninja" >> $GITHUB_PATH
+        unzip -d $HOME/.ninja ninja-mac.zip
+        echo "$HOME/.ninja" >> $GITHUB_PATH
